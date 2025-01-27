@@ -51,6 +51,11 @@ const Home = () => {
     closePopup();
   };
 
+  // Function to delete user
+  const handleDeleteUser = (id) => {
+    setUsers(users.filter((user) => user.id !== id));
+  };
+
   const columns = [
     {
       name: "Name",
@@ -69,7 +74,12 @@ const Home = () => {
     },
     {
       name: "Actions",
-      cell: (row) => <button onClick={() => openPopup(row)}>Update</button>,
+      cell: (row) => (
+        <>
+          <button onClick={() => openPopup(row)}>Update</button>
+          <button onClick={() => handleDeleteUser(row.id)}>Delete</button>
+        </>
+      ),
     },
   ];
 
