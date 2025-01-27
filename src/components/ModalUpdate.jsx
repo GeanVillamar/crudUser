@@ -1,43 +1,56 @@
-// Extraer las funciones necesarias de React
-const { useState } = React;
-const { render } = ReactDOM;
+import React, { useState, useEffect } from "react";
 
-// Definir el componente PopupExample
-const PopupExample = () => {
-  // Estado para controlar la visibilidad del popup
-  const [isPopupOpen, setPopupOpen] = useState(false);
+const ModalUpdate = ({ user, onClose, onUpdate }) => {
+  const [updateUser, setUpdateUser] = useState(user);
 
-  // Función para abrir el popup
-  const openPopup = () => {
-    setPopupOpen(true);
+  useEffect(() => {
+    setUpdateUser(user);
+  }, [user]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateUser({ ...updateUser, [name]: value });
   };
 
-  // Función para cerrar el popup
-  const closePopup = () => {
-    setPopupOpen(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onUpdate(updateUser);
   };
 
-  // Retornar la estructura JSX del componente
   return (
-    <div>
-      {/* Botón para abrir el popup */}
-      <button onClick={openPopup}>Abrir Popup</button>
-      {/* Popup: se muestra si isPopupOpen es true */}
-      {isPopupOpen && (
-        <div className="ventana-popup">
-          <div className="contenido-popup">
-            <p>Contenido del popup</p>
-            <p>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/250px-React.svg.png" />
-            </p>
-            {/* Botón para cerrar el popup */}
-            <button onClick={closePopup}>Cerrar</button>
-          </div>
-        </div>
-      )}
+    <div className="ventana-popup">
+      <div className="contenido-popup">
+        <h2>Update User</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            value={updateUser.name}
+            placeholder="Name"
+            onChange={handleInputChange}
+          />
+          <input
+            type="text"
+            name="username"
+            value={updateUser.username}
+            placeholder="Username"
+            onChange={handleInputChange}
+          />
+          <input
+            type="email"
+            name="email"
+            value={updateUser.email}
+            placeholder="Email"
+            onChange={handleInputChange}
+          />
+          <button type="submit">Update</button>
+          <button type="button" onClick={onClose}>
+            Close
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
-// Renderizar el componente en el elemento con el id "root"
-render(<PopupExample />, document.getElementById("contenedor-popup"));
+export default ModalUpdate;

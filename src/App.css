@@ -8,21 +8,18 @@
   bottom: 200px;
 
 }
+.container-formCreate{
+  position: relative;
+  bottom: 90px;
+  left: 200px;
+  
+}
 .container-table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
   position: relative;
   right:-200px ;
-  bottom:400px;
+  bottom:100px;
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
