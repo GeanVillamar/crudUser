@@ -100,7 +100,7 @@ const Home = () => {
   return (
     <div className="container-home">
       <div className="container-formCreate">
-        <h4>Agregar usuarios</h4>
+        <h4>Add User</h4>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -123,13 +123,13 @@ const Home = () => {
             value={newUser.email}
             onChange={handleInputChange}
           />
-          <button type="submit">Agregar</button>
+          <button type="submit">Add</button>
         </form>
       </div>
 
       <div className="container-table">
         <DataTable
-          title="Usuarios"
+          title="Users"
           columns={columns}
           data={users}
           pagination

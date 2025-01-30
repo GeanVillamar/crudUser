@@ -43,8 +43,10 @@ const ModalUpdate = ({ user, onClose, onUpdate }) => {
             placeholder="Email"
             onChange={handleInputChange}
           />
-          <button type="submit">Update</button>
-          <button type="button" onClick={onClose}>
+          <button id="button-Update" type="submit">
+            Update
+          </button>
+          <button id="button-close" type="button" onClick={onClose}>
             Close
           </button>
         </form>
