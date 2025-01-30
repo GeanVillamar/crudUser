@@ -76,8 +76,12 @@ const Home = () => {
       name: "Actions",
       cell: (row) => (
         <>
-          <button onClick={() => openPopup(row)}>Update</button>
-          <button onClick={() => handleDeleteUser(row.id)}>Delete</button>
+          <button id="button-update" onClick={() => openPopup(row)}>
+            Update
+          </button>
+          <button id="button-delete" onClick={() => handleDeleteUser(row.id)}>
+            Delete
+          </button>
         </>
       ),
     },
@@ -124,11 +128,10 @@ const Home = () => {
       </div>
 
       <div className="container-table">
-        <h4>Usuarios</h4>
         <DataTable
+          title="Usuarios"
           columns={columns}
           data={users}
-          selectableRows
           pagination
           paginationPerPage={4}
           onSelectedRowsChange={(data) => console.log(data)}

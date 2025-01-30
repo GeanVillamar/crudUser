@@ -20,7 +20,7 @@ const ModalUpdate = ({ user, onClose, onUpdate }) => {
   return (
     <div className="ventana-popup">
       <div className="contenido-popup">
-        <h2>Update User</h2>
+        <h4>Update User</h4>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
